@@ -7,20 +7,19 @@
 #else
 #include <sys/stat.h>
 #endif
-#include <errno.h>
 
-int main(int argc, char *argv[]) {
+int main(const int argc, char *argv[]) {
     // Disable output buffering
-    setbuf(stdout, NULL);
-    setbuf(stderr, NULL);
+    setbuf(stdout, nullptr);
+    setbuf(stderr, nullptr);
 
     if (argc < 2) {
         fprintf(stderr, "Usage: ./your_program.sh <command> [<args>]\n");
         return 1;
     }
-    
+
     const char *command = argv[1];
-    
+
     if (strcmp(command, "init") == 0) {
         if (mkdir(".git", 0755) == -1 ||
             mkdir(".git/objects", 0755) == -1 ||
@@ -42,6 +41,6 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Unknown command %s\n", command);
         return 1;
     }
-    
+
     return 0;
 }
