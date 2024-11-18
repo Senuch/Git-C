@@ -1,0 +1,3 @@
+C:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/cmake-build-default/CMakeFiles/git.dir
+C:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/cmake-build-default/CMakeFiles/edit_cache.dir
+C:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/cmake-build-default/CMakeFiles/rebuild_cache.dir

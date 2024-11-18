@@ -1,4 +1,3 @@
-#include <zlib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,6 +8,7 @@
 #include <sys/stat.h>
 #endif
 #include <errno.h>
+#include <zlib.h>
 
 void slice_str(const char *str, char *buffer, size_t start, size_t end) {
     size_t index = 0;
@@ -23,23 +23,23 @@ char *get_file_path(const char *file_name) {
     const size_t sha_length = strlen(file_name);
     char *file_path = malloc(sha_length * sizeof(char));
     char buffer[sha_length + 1];
-    slice_str(file_name, buffer, 0, 1);
+    slice_str(file_name, buffer, 0, 2);
     strcpy(file_path, buffer);
     strcat(file_path, "/");
-    slice_str(file_name, buffer, 2, sha_length - 1);
+    slice_str(file_name, buffer, 2, sha_length);
     strcat(file_path, buffer);
 
     return file_path;
 }
 
-unsigned char *decompress_data(const unsigned char *compressed_data, uLong compressed_data_size,
-                               unsigned long *decompressed_data_size) {
+unsigned char *decompress_data(const unsigned char* compressed_data, unsigned long compressed_data_size,
+                               unsigned long* decompressed_data_size) {
     *decompressed_data_size = compressed_data_size * 4;
-    unsigned char *decompressed_data = malloc(*decompressed_data_size);
+    unsigned char* decompressed_data = malloc(*decompressed_data_size);
     if (decompressed_data == NULL) {
         printf("malloc failed\n");
 
-        return nullptr;
+        return NULL;
     }
 
     int result = uncompress(decompressed_data, decompressed_data_size, compressed_data, compressed_data_size);
@@ -47,7 +47,7 @@ unsigned char *decompress_data(const unsigned char *compressed_data, uLong compr
         printf("uncompress failed\n");
         free(decompressed_data);
 
-        return nullptr;
+        return NULL;
     }
 
     return decompressed_data;
@@ -63,13 +63,13 @@ char *read_file(const char *sha1_string, long *compressed_size) {
     FILE *target_file = fopen(file_absolute_path, "rb");
     if (target_file == NULL) {
         printf("Error opening file %s\n", file_absolute_path);
-        return nullptr;
+        return NULL;
     }
 
     if (fseek(target_file, 0, SEEK_END) != 0) {
         printf("Error seeking end of file %s\n", file_absolute_path);
         fclose(target_file);
-        return nullptr;
+        return NULL;
     }
 
     const long file_size = ftell(target_file);
@@ -79,7 +79,7 @@ char *read_file(const char *sha1_string, long *compressed_size) {
         fclose(target_file);
         free(file_content);
 
-        return nullptr;
+        return NULL;
     }
 
     if (fseek(target_file, 0, SEEK_SET) != 0) {
@@ -87,7 +87,7 @@ char *read_file(const char *sha1_string, long *compressed_size) {
         fclose(target_file);
         free(file_content);
 
-        return nullptr;
+        return NULL;
     }
 
     size_t file_bytes_read = fread(file_content, sizeof(char), file_size, target_file);
@@ -96,7 +96,7 @@ char *read_file(const char *sha1_string, long *compressed_size) {
         fclose(target_file);
         free(file_content);
 
-        return nullptr;
+        return NULL;
     }
 
     *compressed_size = (long) file_bytes_read;
@@ -131,7 +131,7 @@ void cat_file(const char *path) {
         }
 
         unsigned char *body_content = header_end + 1;
-        const uLong body_size = uncompressed_size - (body_content - decompressed_file);
+        const unsigned long body_size = uncompressed_size - (body_content - decompressed_file);
         printf("%.*s", (int)body_size, body_content);
     }
 
@@ -141,8 +141,8 @@ void cat_file(const char *path) {
 
 int main(const int argc, char *argv[]) {
     // Disable output buffering
-    setbuf(stdout, nullptr);
-    setbuf(stderr, nullptr);
+    setbuf(stdout, NULL);
+    setbuf(stderr, NULL);
 
     if (argc < 2) {
         fprintf(stderr, "Usage: ./your_program.sh <command> [<args>]\n");
