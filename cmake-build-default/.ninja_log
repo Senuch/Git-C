@@ -1,8 +1,8 @@
 # ninja log v6
-2	91	7536408336533830	CMakeFiles/git.dir/src/main.c.obj	8c95e3959780e29e
-1	217	7536419549443887	build.ninja	d57f10cc14f9e15d
-3	101	7536418354326166	git.exe	5e1278ad8a6bbb65
-2	673	7536493700159107	CMakeFiles/git.dir/src/main.c.obj	8c95e3959780e29e
-674	853	7536493706873196	git.exe	5e1278ad8a6bbb65
-2	96	7536494063419997	CMakeFiles/git.dir/src/main.c.obj	8c95e3959780e29e
-96	196	7536494064357750	git.exe	5e1278ad8a6bbb65
+6	917	7540814017836531	CMakeFiles/git.dir/src/main.c.obj	8c95e3959780e29e
+1	217	7540847830560376	build.ninja	d57f10cc14f9e15d
+87	202	7540843514082541	git.exe	5f79fec6efc641eb
+7	106	7540842062522222	CMakeFiles/git.dir/src/utils/compression/compression.c.obj	5d94b576308e0af5
+9	110	7540842062546660	CMakeFiles/git.dir/src/utils/file/file.c.obj	c7547079234d2c9a
+3	87	7540824310544057	CMakeFiles/git.dir/src/utils/string/string.c.obj	aae18fadcb19a144
+3	87	7540843513243904	CMakeFiles/git.dir/src/commands/commands.c.obj	d38ab03056476e32

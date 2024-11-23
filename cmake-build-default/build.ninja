@@ -44,11 +44,35 @@ cmake_ninja_workdir = C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/code
 
 build cmake_object_order_depends_target_git: phony || .
 
+build CMakeFiles/git.dir/src/commands/commands.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/src/commands/commands.c || cmake_object_order_depends_target_git
+  DEP_FILE = CMakeFiles\git.dir\src\commands\commands.c.obj.d
+  FLAGS = -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\git.dir
+  OBJECT_FILE_DIR = CMakeFiles\git.dir\src\commands
+
 build CMakeFiles/git.dir/src/main.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/src/main.c || cmake_object_order_depends_target_git
   DEP_FILE = CMakeFiles\git.dir\src\main.c.obj.d
   FLAGS = -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\git.dir
   OBJECT_FILE_DIR = CMakeFiles\git.dir\src
+
+build CMakeFiles/git.dir/src/utils/compression/compression.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/src/utils/compression/compression.c || cmake_object_order_depends_target_git
+  DEP_FILE = CMakeFiles\git.dir\src\utils\compression\compression.c.obj.d
+  FLAGS = -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\git.dir
+  OBJECT_FILE_DIR = CMakeFiles\git.dir\src\utils\compression
+
+build CMakeFiles/git.dir/src/utils/file/file.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/src/utils/file/file.c || cmake_object_order_depends_target_git
+  DEP_FILE = CMakeFiles\git.dir\src\utils\file\file.c.obj.d
+  FLAGS = -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\git.dir
+  OBJECT_FILE_DIR = CMakeFiles\git.dir\src\utils\file
+
+build CMakeFiles/git.dir/src/utils/string/string.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Jerry/Desktop/Desktop/Personal/Codecrafters/codecrafters-git-c/src/utils/string/string.c || cmake_object_order_depends_target_git
+  DEP_FILE = CMakeFiles\git.dir\src\utils\string\string.c.obj.d
+  FLAGS = -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\git.dir
+  OBJECT_FILE_DIR = CMakeFiles\git.dir\src\utils\string
 
 
 # =============================================================================
@@ -58,7 +82,7 @@ build CMakeFiles/git.dir/src/main.c.obj: C_COMPILER__git_unscanned_ C$:/Users/Je
 #############################################
 # Link the executable git.exe
 
-build git.exe: C_EXECUTABLE_LINKER__git_ CMakeFiles/git.dir/src/main.c.obj | C$:/MinGW/lib/libz.a
+build git.exe: C_EXECUTABLE_LINKER__git_ CMakeFiles/git.dir/src/commands/commands.c.obj CMakeFiles/git.dir/src/main.c.obj CMakeFiles/git.dir/src/utils/compression/compression.c.obj CMakeFiles/git.dir/src/utils/file/file.c.obj CMakeFiles/git.dir/src/utils/string/string.c.obj | C$:/MinGW/lib/libz.a
   LINK_LIBRARIES = C:/MinGW/lib/libz.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\git.dir
   POST_BUILD = cd .
