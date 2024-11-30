@@ -125,6 +125,7 @@ char *read_git_blob_file(const char *sha1_string, long *compressed_size) {
     const char *git_default_objects_path = GIT_OBJECTS_DIR;
     const char file_absolute_path[strlen(file_relative_path) + strlen(git_default_objects_path)];
     strcpy(file_absolute_path, git_default_objects_path);
+    strcat(file_absolute_path, "/");
     strcat(file_absolute_path, file_relative_path);
 
     long file_size = 0;
