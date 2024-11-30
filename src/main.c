@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "commands/commands.h"
-#include <openssl/sha.h>
 
 int main(const int argc, char *argv[]) {
     // Disable output buffering
@@ -24,7 +23,8 @@ int main(const int argc, char *argv[]) {
     }
 
     if(strcmp(command, "hash-object") == 0 && (strcmp(argv[2], "-w") == 0 || strlen(argv[3]) > 0)) {
-        return hash_object(argv[3]);
+        int res = hash_object(argv[3]);
+        return res;
     }
 
     fprintf(stderr, "Unknown command %s\n", command);

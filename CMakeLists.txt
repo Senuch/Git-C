@@ -15,11 +15,14 @@ add_executable(git ${SOURCE_FILES}
         src/utils/compression/compression.c
         src/commands/commands.h
         src/constants.h
-        src/commands/commands.c)
+        src/commands/commands.c
+        src/utils/directory/directory.h
+        src/utils/directory/directory.c
+)
 
 if(WIN32)
     # Configure zlib paths for Windows
-    set(ZLIB_ROOT "C:/MinGW")
+    set(ZLIB_ROOT "C:/msys64/ucrt64")
     set(ZLIB_INCLUDE_DIR "${ZLIB_ROOT}/include")
     set(ZLIB_LIBRARY "${ZLIB_ROOT}/lib/libz.a")
 
@@ -27,12 +30,19 @@ if(WIN32)
     target_link_libraries(git ${ZLIB_LIBRARY})
 
     # Add OpenSSL paths
-    set(OPENSSL_ROOT "C:/Program Files (x86)/OpenSSL-Win32") # Adjust to your OpenSSL installation path
+    set(OPENSSL_ROOT "C:/msys64/mingw64") # Adjust to your OpenSSL installation path
+    set(OPENSSL_LIBRARY_CRYPTO "${OPENSSL_ROOT}/lib/libcrypto.a")
+    set(OPENSSL_LIBRARY_SSL "${OPENSSL_ROOT}/lib/libssl.a")
     include_directories("${OPENSSL_ROOT}/include")
     link_directories("${OPENSSL_ROOT}/lib")
 
-    # Link OpenSSL libraries
-    target_link_libraries(git libcrypto) # Add OpenSSL's libcrypto
+    # Link OpenSSL libraries and additional system libraries
+    target_link_libraries(git
+            ${OPENSSL_LIBRARY_SSL}
+            ${OPENSSL_LIBRARY_CRYPTO}
+            ws2_32
+            crypt32
+    )
 else()
     # Use find_package for other platforms
     find_package(ZLIB REQUIRED)
